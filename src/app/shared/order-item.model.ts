@@ -3,4 +3,8 @@ export class OrderItem {
     OrderId:number;
     ItemId:number;
     Quantity:number;
+    ItemName:string;
+    Price:number;
+    Total:number;
+
 }
