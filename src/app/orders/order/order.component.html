@@ -48,7 +48,7 @@
             <th>Quantity</th>
             <th>Toplam</th>
             <th>
-                <a class="btn btn-sm btn-success text-white">Sipariş ekle</a>
+                <a class="btn btn-sm btn-success text-white"(click)="AddOrEditOrderItem(null,orderModel.OrderId)"><i class="fa fa-plus"></i>Sipariş ekle</a>
             </th>
         </thead>
         <tbody>
@@ -57,11 +57,14 @@
                     Sipariş edilen kayıt bulunamadı
                 </td>
             </tr>
-            <tr *ngFor="let item of orderItemModel">
+            <tr *ngFor="let item of orderItemModel; let i= index;">
                 <td>{{item.ItemName}}</td>
                 <td>{{item.Price}}</td>
                 <td>{{item.Quantity}}</td>
                 <td>{{item.Total}}</td>
+                <td>
+                <a class="btn btn-sm btn-success text-white" (click)="AddOrEditOrderItem(i,orderModel.OrderId)"><i class="fa fa-pencil"></i></a>
+                </td>
             </tr>
 
         </tbody>
