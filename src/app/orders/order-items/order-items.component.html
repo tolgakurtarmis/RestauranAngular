@@ -2,10 +2,10 @@
 <hr>
 <form #form="ngForm" autocomplete="off">
     <div class="form-group">
-        <label>Yemek Detayı</label>
+        <label>Yemek Seçimi</label>
         <select name="ItemID" #ItemId="ngModel" [(ngModel)]="formData.ItemId" class="form-control">
             <option value="0">--Seçiniz</option>
-        </select>>
+        </select>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
@@ -21,16 +21,17 @@
             <label>Miktar</label>
             <input name="Quantity" #Quantity="ngModel" [(ngModel)]="formData.Quantity"  class="form-control" />
         </div>
-    </div>
-    <div class="form-group col-md-6">
-        <label>Toplam Fiyat</label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text">TL</div>
+        <div class="form-group col-md-12">
+            <label>Toplam Fiyat</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">TL</div>
+                </div>
+                <input name="Total" #Total="ngModel" [(ngModel)]="formData.Total" class="form-control" readonly/>
             </div>
-            <input name="Total" #Total="ngModel" [(ngModel)]="formData.Total" class="form-control" readonly/>
         </div>
     </div>
+
     <div class="form-group">
         <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i>Submit</button>
         <button type="submit" class="btn btn-outline-dar ml-1"><i class="fa fa-close"></i>Close</button>
