@@ -1,6 +1,9 @@
 <h4 class="display=5">Yemek Sipariş Detayı</h4>
 <hr>
 <form #form="ngForm" autocomplete="off">
+    <input type="hidden"name="OrderId" #OrderId="ngModel" [(ngModel)]="formData.OrderId"/>
+    <input type="hidden"name="OrderItemId" #OrderItemId="ngModel" [(ngModel)]="formData.OrderItemId"/>
+    <input type="hidden"name="ItemName" #ItemName="ngModel" [(ngModel)]="formData.ItemName"/>
     <div class="form-group">
         <label>Yemek Seçimi</label>
         <select name="ItemId" #ItemId="ngModel" [(ngModel)]="formData.ItemId" class="form-control"(change)="updatePrice($event.target)">
@@ -21,7 +24,7 @@
         </div>
         <div class="form-group col-md-6">
             <label>Miktar</label>
-            <input name="Quantity" #Quantity="ngModel" [(ngModel)]="formData.Quantity"  class="form-control" />
+            <input name="Quantity" #Quantity="ngModel" [(ngModel)]="formData.Quantity"  class="form-control" (keyup)="updateTotal()"/>
         </div>
         <div class="form-group col-md-12">
             <label>Toplam Fiyat</label>

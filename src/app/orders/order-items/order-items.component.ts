@@ -39,5 +39,10 @@ export class OrderItemsComponent implements OnInit {
     } else {
       this.formData.Price = this.itemList[ctrl.selectedIndex - 1].price;
     }
+    this.updateTotal();
   }
+  updateTotal() {
+    this.formData.Total = parseFloat((this.formData.Quantity * this.formData.Price).toFixed(2));
+  }
+
 }
