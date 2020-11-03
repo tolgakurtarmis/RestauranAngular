@@ -3,8 +3,10 @@
 <form #form="ngForm" autocomplete="off">
     <div class="form-group">
         <label>Yemek Seçimi</label>
-        <select name="ItemID" #ItemId="ngModel" [(ngModel)]="formData.ItemId" class="form-control">
+        <select name="ItemId" #ItemId="ngModel" [(ngModel)]="formData.ItemId" class="form-control"(change)="updatePrice($event.target)">
             <option value="0">--Seçiniz</option>
+            <option *ngFor="let item of itemList"value="{{item.itemId}}">{{item.name}}</option>
+
         </select>
     </div>
     <div class="form-row">
