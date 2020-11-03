@@ -33,12 +33,11 @@ export class OrderItemsComponent implements OnInit {
       Total: 0
     }
   }
-  updatePrice(ctr) {
-    if (ctr.selectedIndex == 0) {
+  updatePrice(ctrl) {
+    if (ctrl.selectedIndex == 0) {
       this.formData.Price = 0;
-
     } else {
-      this.formData.Price = this.itemList[ctr.target.selectedIndex - 1].price;
+      this.formData.Price = this.itemList[ctrl.selectedIndex - 1].price;
     }
   }
 }
