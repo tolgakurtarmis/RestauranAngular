@@ -62,9 +62,10 @@
                 <td>{{item.Price}}</td>
                 <td>{{item.Quantity}}</td>
                 <td>{{item.Total}}</td>
-                <td>
+            <td>
                 <a class="btn btn-sm btn-success text-white" (click)="AddOrEditOrderItem(i,orderModel.OrderId)"><i class="fa fa-pencil"></i></a>
-                </td>
+                <a class="btn btn-sm btn-danger text-white ml-1" (click)="DeleteOrderItem(i,orderModel.OrderId)"><i class="fa fa-trash"></i></a>                
+            </td>
             </tr>
 
         </tbody>
