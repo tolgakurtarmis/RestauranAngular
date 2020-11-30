@@ -15,10 +15,12 @@ export class OrderComponent implements OnInit {
 
   orderModel :Order = new Order();
   orderItemModel :Array<OrderItem> = new Array<OrderItem>();
+  
   constructor(private orderService: OrderService ,
             private dialog:MatDialog) { }
 
   ngOnInit(): void {
+    this.orderItemModel = this.orderService.orderItemModel;
   } 
 
     resetForm(form?: NgForm){
@@ -37,9 +39,9 @@ export class OrderComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose=true;
-    dialogConfig.width="250px"; 
+    dialogConfig.width="500px"; 
     dialogConfig.data={orderItemIndex,orderId};    
-    this.dialog.open(OrderItemsComponent);
+    this.dialog.open(OrderItemsComponent,dialogConfig);
   }
 
 }
