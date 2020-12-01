@@ -15,6 +15,8 @@
                 <select name="CustomerId" #CustomerId="ngModel" [(ngModel)]="orderModel.CustomerId"
                     class="form-control">
                     <option value="0">= select =</option>
+                    <option *ngFor="let cus of customerList" value="{{cus.customerId}}">{{cus.name}}</option>
+
                 </select>
             </div>
             <div class="form-group">
