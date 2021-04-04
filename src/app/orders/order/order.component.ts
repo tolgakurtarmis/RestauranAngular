@@ -14,10 +14,12 @@ import { Customer } from 'src/app/shared/customer.model';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-
+  isValid:boolean= true;
   customerList:Customer[];
   orderModel: Order = new Order();
   orderItemModel: Array<OrderItem> = new Array<OrderItem>();
+  sOrderItemId:number;
+  sOrderId:number;
 
   constructor(private orderService: OrderService,
     private dialog: MatDialog,
@@ -59,5 +61,22 @@ export class OrderComponent implements OnInit {
       return prev + curr.Total;
     }, 0);
     this.orderModel.GrandTotal = parseFloat(this.orderModel.GrandTotal.toFixed(2));
+  }
+  validateForm(){
+  this.isValid = true;
+  if(this.orderModel.CustomerId == 0 || typeof this.orderModel.CustomerId === "undefined"){
+    this.isValid = false;
+  }
+  // else if (this.orderItemModel.length == 0){
+  //   this.isValid =false;
+  // }
+  return this.isValid;
+  }
+  onSubmit(form: NgForm){
+    if(this.validateForm()){
+      this.orderService.saveOrder().subscribe(res => {
+        this.resetForm();
+      });
+    }
   }
 }
