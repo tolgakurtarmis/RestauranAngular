@@ -42,7 +42,8 @@ export class OrderComponent implements OnInit {
       OrderNo: Math.floor(100000 + Math.random() * 900000).toString(),
       CustomerId: 0,
       PaymentMethod: "",
-      GrandTotal: 0
+      GrandTotal: 0,
+      customerName : ''
     };
     this.orderItemModel = [];
   }

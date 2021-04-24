@@ -27,4 +27,12 @@ export class OrderService {
       }
       return this.http.post(environment.apiUrl +'order/SaveOrder',body);
     }
+    GetOrderList() {
+      var data = this.http.get(environment.apiUrl+'Order/GetOrders').toPromise();
+      console.log("Get Order List data => ",data);
+      return data;
+     }
+     DeleteOrder(orderId:number){
+      return this.http.delete(environment.apiUrl+'Order/DeleteOrder/'+orderId).toPromise();
+     }
 }
