@@ -9,17 +9,22 @@ import { Order } from './order.model';
 })
 export class OrderService {
 
-    formData:Order;
+    formData:Order =new Order();
     orderItemModel:Array<OrderItem>=[];
 
   constructor(private http:HttpClient) { }
 
 
-    saveOrder(){
+    saveOrder(orderModel:Order){
+      this.formData.CustomerId = orderModel.CustomerId;
+      this.formData.GrandTotal = orderModel.GrandTotal;
+      this.formData.OrderId = orderModel.OrderId;
+      this.formData.OrderNo = orderModel.OrderNo;
+      this.formData.PaymentMethod = orderModel.PaymentMethod;
       var body = {
-        ...this.formData,
-        OrderItemModal: this.orderItemModel
+         OrderSubDto : this.formData,
+         OrderItemModelDtos: this.orderItemModel
       }
-      return this.http.post(environment.apiUrl +'api/Order/SaveOrder',body);
+      return this.http.post(environment.apiUrl +'order/SaveOrder',body);
     }
 }

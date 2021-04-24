@@ -7,6 +7,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { CustomerService } from 'src/app/shared/customer.service';
 import { Customer } from 'src/app/shared/customer.model';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -23,7 +25,9 @@ export class OrderComponent implements OnInit {
 
   constructor(private orderService: OrderService,
     private dialog: MatDialog,
-    private customerService:CustomerService) { }
+    private customerService:CustomerService,
+    private toastr: ToastrService,
+    private route :Router) { }
 
   ngOnInit(): void {
     this.orderItemModel = this.orderService.orderItemModel;
@@ -40,6 +44,7 @@ export class OrderComponent implements OnInit {
       PaymentMethod: "",
       GrandTotal: 0
     };
+    this.orderItemModel = [];
   }
 
   AddOrEditOrderItem(orderItemIndex, orderId): void {
@@ -74,8 +79,10 @@ export class OrderComponent implements OnInit {
   }
   onSubmit(form: NgForm){
     if(this.validateForm()){
-      this.orderService.saveOrder().subscribe(res => {
-        this.resetForm();
+      this.orderService.saveOrder(this.orderModel).subscribe(res => {
+        this.resetForm(); 
+        this.toastr.success('Tebrikler!', 'Siparişiniz Başarıyla Oluşturuldu :)');
+        this.route.navigate(['/orders'])
       });
     }
   }
