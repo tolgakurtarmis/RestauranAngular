@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="#"><b>Sipariş Listesi</b></a>
-        <a class="nav-item nav-link" routerLink="/login"><b>Giriş Yap</b></a>
+        <a class="nav-item nav-link" routerLink="/login" *ngIf="!isAuthenticated"><b>Giriş Yap</b></a>
         <a class="nav-item nav-link " routerLink="/register" tabindex="-1"><b>Kayıt Ol</b></a>
       </div>
     </div>

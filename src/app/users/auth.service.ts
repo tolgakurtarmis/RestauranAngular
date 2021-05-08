@@ -13,8 +13,16 @@ export class AuthService {
   Token_Key = "token";
   Name_Key="name";
 
+  get isAuthenticated(){
+    return !!localStorage.getItem(this.Token_Key);
+}
+logout(){
+  localStorage.removeItem(this.Token_Key);
+  localStorage.removeItem(this.Name_Key);
+}
+
   login(loginData: any){
-    this.http.post(environment.apiUrl +'/api/auth/login',loginData)
+    this.http.post(environment.apiUrl +'auth/login',loginData)
           .subscribe((res:any) => {
             var authResponse = res;
             if (authResponse != null){
