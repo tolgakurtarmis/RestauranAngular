@@ -14,7 +14,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-
+import {NavbarComponent} from './navbar/navbar.component';
+import {LoginComponent} from './users/login.component';
+import {RegisterComponent} from './users/register.component';
+import {AuthService} from './users/auth.service';
+ 
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { ToastrModule } from 'ngx-toastr';
     CustomerComponent,
     OrdersComponent,
     OrderComponent,
-    OrderItemsComponent
+    OrderItemsComponent,
+    NavbarComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot()
   ],
   entryComponents:[OrderItemsComponent],
-  providers: [OrderService],
+  providers: [OrderService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
