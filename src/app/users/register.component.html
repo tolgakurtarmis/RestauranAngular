@@ -1,0 +1,65 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form" class="editForm">
+
+    <div class="container col-md-3">
+        <div class="form-group">
+
+            <label for="uname">
+                <b>Username</b>
+            </label>
+            <input class="form-control" type="text" placeholder="Kullanıcı Adı" name="uname" required
+                [ngClass]="{'error':isValid('userName')}" formControlName="userName">
+        </div>
+
+        <div class="form-group">
+
+            <label for="fname">
+                <b>isim</b>
+            </label>
+            <input class="form-control" type="text" placeholder="isim" name="fname" required
+                [ngClass]="{'error':isValid('firstName')}" formControlName="firstName">
+        </div>
+
+        <div class="form-group">
+
+            <label for="lname">
+                <b>Soyad</b>
+            </label>
+            <input class="form-control" type="text" placeholder="Soyad" name="lname" required
+                [ngClass]="{'error':isValid('lastName')}" formControlName="lastName">
+        </div>
+
+        <div class="form-group">
+
+            <label for="email">
+                <b>E-Posta</b>
+            </label>
+            <input class="form-control" type="text" placeholder="E-Posta" name="email" required
+                [ngClass]="{'error':isValid('email')}" formControlName="email">
+        </div>
+
+        <div class="form-group">
+
+            <label for="password">
+                <b>Şifre</b>
+            </label>
+            <input class="form-control" type="text" placeholder="Şifre" name="password" required
+                [ngClass]="{'error':isValid('password')}" formControlName="password">
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">
+                <b>Şifre Doğrulama</b>
+            </label>
+            <input class="form-control" type="text" placeholder="Şifre Doğrulama" name="confirmPassword" required
+                [ngClass]="{'error':isValid('confirmPassword')}" formControlName="confirmPassword">
+        </div>
+        <br />
+        <span *ngIf="form.error?.matchingFields">Şifreler uyuşmuyor</span>
+        <br />
+
+        <button class="btn btn-primary">Kayıt Ol</button>
+
+    </div>
+
+
+</form>

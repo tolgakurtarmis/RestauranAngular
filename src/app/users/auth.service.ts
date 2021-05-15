@@ -34,4 +34,15 @@ logout(){
             }
           });
   }
+  register(user :any){
+    delete user.confirmPassword;
+    this.http.post(environment.apiUrl + 'auth/register',user)
+    .subscribe((res:any) => {
+        localStorage.setItem(this.Token_Key , res.token);
+        localStorage.setItem(this.Name_Key , res.username);
+        console.log(localStorage.getItem(this.Token_Key));
+        this.router.navigate(['/']);
+
+    });
+  }
 }
